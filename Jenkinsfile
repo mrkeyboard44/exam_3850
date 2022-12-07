@@ -57,10 +57,10 @@ pipeline {
 					// 	}
 
 					// }
-                    sh 'main.py phone text output'
-                    sh 'main.py tablet csv output'
-                    sh 'main.py laptop json output'
-                    sh 'main.py phone yaml output'
+                    sh 'python3 main.py phone text output'
+                    sh 'python3 main.py tablet csv output'
+                    sh 'python3 main.py laptop json output'
+                    sh 'python3 main.py phone yaml output'
 				}
 
 			}
