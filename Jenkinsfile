@@ -20,11 +20,11 @@ pipeline {
             stage('Code Quantity') {
                 steps {
                     script {
-							USAGE_REPORT = sh (
+							FILE_AMOUNT = sh (
 								script: 'ls | wc -l',
 								returnStdout: true
 							)
-							println USAGE_REPORT
+							println FILE_AMOUNT
 						}
                     sh 'ls | wc -l'
                 }
