@@ -13,6 +13,7 @@ pipeline {
 	    stages {
 			stage('Build') {
 				steps {
+                    echo 'Pipeline built by Matthew Dandar A01180450'
                     echo 'Installing The Requiremnts'
 					sh 'pip install -r requirements.txt'
 				}
@@ -38,19 +39,6 @@ pipeline {
                 }
             }
 			stage('Run Target') {
-				// steps {
-				// 	script {
-				// 		scriptDir = new File(getClass().protectionDomain.codeSource.location.path).parent
-				// 		echo "$scriptDir"
-				// 		sh 'rm -rfv *test-reports/*'
-				// 		def files = findFiles(glob: "**/test_*.py")
-				// 		for (file in files) {
-				// 			def file_path = file.path
-				// 			sh "coverage run --omit */site-packages/*,*/dist-packages/* $file_path"
-				// 		}
-				// 		sh 'coverage report'
-				// 	}
-				// }
                 when {
                     expression { return params.TARGET == 'run' }
                 }
