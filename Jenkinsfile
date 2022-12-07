@@ -35,7 +35,7 @@ pipeline {
 							)
 							println FILE_AMOUNT
 						}
-                    sh 'ls | wc -l'
+                    echo 'ls | wc -l'
                 }
             }
 			stage('Run Target') {
