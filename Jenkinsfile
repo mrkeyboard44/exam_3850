@@ -42,7 +42,7 @@ pipeline {
 				// 		}
 				// 		sh 'coverage report'
 				// 	}
-				}
+				// }
                 when {
                     expression { return params.TARGET == 'run' }
                 }
