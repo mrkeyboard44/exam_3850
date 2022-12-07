@@ -1,7 +1,14 @@
+/// Matthew Dandar, Dec 7 2022, Python Pipeline
+/// BUILD: Installs Requirements
+/// CODE QUALITY: tests code quality with pylint
+/// CODE QUANTITY: counts amount of python files.
+/// RUN TARGET: Runs main.py with 4 series of parameters
+/// PACKAGE: returns files packaged in a zip file 
+
 pipeline {
 	    agent any
         parameters {
-			string(defaultValue: 'do_nothing', description: 'Run the App', name: 'TARGET')
+			string(defaultValue: 'do_nothing', description: 'Run Target Scripts', name: 'TARGET')
 		}
 	    stages {
 			stage('Build') {
@@ -19,9 +26,10 @@ pipeline {
 			}
             stage('Code Quantity') {
                 steps {
+                    echo "Counting the amount of python files in project"
                     script {
 							FILE_AMOUNT = sh (
-								script: 'ls | wc -l',
+								script: 'ls *.py | wc -l',
 								returnStdout: true
 							)
 							println FILE_AMOUNT
@@ -47,20 +55,11 @@ pipeline {
                     expression { return params.TARGET == 'run' }
                 }
 				steps {
-					// always {
-					// 	script {
-					// 		// def files = ['phone text', 'tablet csv]
-					// 		for (file in files) {
-					// 			def file_path = file.path
-					// 			sh "python main.py"
-					// 		}
-					// 	}
-
-					// }
                     sh 'python3 main.py phone text output'
                     sh 'python3 main.py tablet csv output'
                     sh 'python3 main.py laptop json output'
                     sh 'python3 main.py phone yaml output'
+                    sh 'ls output*'
 				}
 
 			}
